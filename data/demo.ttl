@@ -1,0 +1,74 @@
+@prefix grid: <https://example.org/grid#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+grid:C a grid:DistributionTransformer ;
+    grid:belongsTo grid:Y ;
+    grid:currentLoad 500.0 ;
+    grid:downstreamOf grid:Y ;
+    grid:inService true ;
+    grid:label "配变 C" ;
+    grid:ratedCapacity 400.0 ;
+    grid:supplies grid:U3 .
+
+grid:L1 a grid:TieSwitch ;
+    grid:connectedTo grid:B ;
+    grid:inService true ;
+    grid:label "联络开关 L1" ;
+    grid:status "open" .
+
+grid:U1 a grid:ResidentialCustomer ;
+    grid:households 700 ;
+    grid:label "用户组 U1" .
+
+grid:U2 a grid:ResidentialCustomer ;
+    grid:households 500 ;
+    grid:label "用户组 U2" .
+
+grid:U3 a grid:IndustrialCustomer ;
+    grid:households 100 ;
+    grid:label "用户组 U3" .
+
+grid:A a grid:DistributionTransformer ;
+    grid:belongsTo grid:X ;
+    grid:connectedTo grid:B ;
+    grid:currentLoad 400.0 ;
+    grid:downstreamOf grid:S1 ;
+    grid:inService true ;
+    grid:label "配变 A" ;
+    grid:ratedCapacity 630.0 ;
+    grid:supplies grid:U1 .
+
+grid:B a grid:DistributionTransformer ;
+    grid:belongsTo grid:X ;
+    grid:currentLoad 300.0 ;
+    grid:downstreamOf grid:A ;
+    grid:inService true ;
+    grid:label "配变 B" ;
+    grid:ratedCapacity 400.0 ;
+    grid:supplies grid:U2 .
+
+grid:S1 a grid:SectionalizingSwitch ;
+    grid:connectedTo grid:A ;
+    grid:downstreamOf grid:X ;
+    grid:inService true ;
+    grid:label "分段开关 S1" ;
+    grid:status "closed" .
+
+grid:X a grid:Feeder ;
+    grid:backupFeeder grid:Y ;
+    grid:connectedTo grid:S1 ;
+    grid:currentLoad 700.0 ;
+    grid:inService true ;
+    grid:isSource true ;
+    grid:label "馈线 X" ;
+    grid:ratedCapacity 2000.0 .
+
+grid:Y a grid:Feeder ;
+    grid:connectedTo grid:C,
+        grid:L1 ;
+    grid:currentLoad 500.0 ;
+    grid:inService true ;
+    grid:isSource true ;
+    grid:label "馈线 Y" ;
+    grid:ratedCapacity 2000.0 .
+

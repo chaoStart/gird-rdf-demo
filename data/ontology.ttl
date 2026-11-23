@@ -1,0 +1,129 @@
+@prefix grid: <https://example.org/grid#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+grid:Busbar a owl:Class ;
+    rdfs:subClassOf grid:ElectricalEquipment .
+
+grid:IndustrialCustomer a owl:Class ;
+    rdfs:subClassOf grid:Customer .
+
+grid:LineSegment a owl:Class ;
+    rdfs:subClassOf grid:ElectricalEquipment .
+
+grid:Outage a owl:Class ;
+    rdfs:subClassOf grid:GridEvent .
+
+grid:OverloadEvent a owl:Class ;
+    rdfs:subClassOf grid:GridEvent .
+
+grid:ResidentialCustomer a owl:Class ;
+    rdfs:subClassOf grid:Customer .
+
+grid:SectionalizingSwitch a owl:Class ;
+    rdfs:subClassOf grid:Switch .
+
+grid:Substation a owl:Class ;
+    rdfs:subClassOf grid:ElectricalEquipment .
+
+grid:SwitchingPlan a owl:Class ;
+    rdfs:subClassOf grid:BusinessObject .
+
+grid:TieSwitch a owl:Class ;
+    rdfs:subClassOf grid:Switch .
+
+grid:backupFeeder a owl:ObjectProperty ;
+    rdfs:domain grid:Feeder ;
+    rdfs:range grid:Feeder .
+
+grid:belongsTo a owl:ObjectProperty ;
+    rdfs:domain grid:ElectricalEquipment ;
+    rdfs:range grid:Feeder .
+
+grid:connectedTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:domain grid:ElectricalEquipment ;
+    rdfs:range grid:ElectricalEquipment .
+
+grid:currentLoad a owl:DatatypeProperty ;
+    rdfs:domain grid:GridEntity ;
+    rdfs:range xsd:decimal .
+
+grid:downstreamOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:domain grid:ElectricalEquipment ;
+    rdfs:range grid:ElectricalEquipment .
+
+grid:hasFault a owl:ObjectProperty ;
+    rdfs:domain grid:ElectricalEquipment ;
+    rdfs:range grid:Fault .
+
+grid:households a owl:DatatypeProperty ;
+    rdfs:domain grid:GridEntity ;
+    rdfs:range xsd:integer .
+
+grid:inService a owl:DatatypeProperty ;
+    rdfs:domain grid:GridEntity ;
+    rdfs:range xsd:boolean .
+
+grid:isSource a owl:DatatypeProperty ;
+    rdfs:domain grid:GridEntity ;
+    rdfs:range xsd:boolean .
+
+grid:label a owl:DatatypeProperty ;
+    rdfs:domain grid:GridEntity ;
+    rdfs:range xsd:string .
+
+grid:ontology a owl:Ontology .
+
+grid:ratedCapacity a owl:DatatypeProperty ;
+    rdfs:domain grid:GridEntity ;
+    rdfs:range xsd:decimal .
+
+grid:relatedTo a owl:ObjectProperty ;
+    rdfs:domain grid:GridEntity ;
+    rdfs:range grid:GridEntity .
+
+grid:status a owl:DatatypeProperty ;
+    rdfs:domain grid:GridEntity ;
+    rdfs:range xsd:string .
+
+grid:supplies a owl:ObjectProperty ;
+    rdfs:domain grid:DistributionTransformer ;
+    rdfs:range grid:Customer .
+
+grid:targets a owl:ObjectProperty ;
+    rdfs:domain grid:MaintenanceWorkOrder ;
+    rdfs:range grid:ElectricalEquipment .
+
+grid:DistributionTransformer a owl:Class ;
+    rdfs:subClassOf grid:ElectricalEquipment .
+
+grid:Fault a owl:Class ;
+    rdfs:subClassOf grid:GridEvent .
+
+grid:MaintenanceWorkOrder a owl:Class ;
+    rdfs:subClassOf grid:BusinessObject .
+
+grid:BusinessObject a owl:Class ;
+    rdfs:subClassOf grid:GridEntity .
+
+grid:Switch a owl:Class ;
+    rdfs:subClassOf grid:ElectricalEquipment .
+
+grid:Customer a owl:Class ;
+    rdfs:subClassOf grid:GridEntity ;
+    owl:disjointWith grid:ElectricalEquipment .
+
+grid:Feeder a owl:Class ;
+    rdfs:subClassOf grid:ElectricalEquipment .
+
+grid:GridEvent a owl:Class ;
+    rdfs:subClassOf grid:GridEntity .
+
+grid:GridEntity a owl:Class .
+
+grid:ElectricalEquipment a owl:Class ;
+    rdfs:subClassOf grid:GridEntity .
+

@@ -1,0 +1,7 @@
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+rdflib>=7.1,<8
+owlrl>=7.1,<8
+httpx>=0.27,<1
+pytest>=8,<10
+neo4j>=5.20,<7
